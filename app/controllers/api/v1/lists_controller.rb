@@ -2,7 +2,11 @@ class Api::V1::ListsController < ApplicationController
 
     def index
         lists = List.all
-        render json: lists
+        # options = {
+
+        #     include: [:category]
+        # }
+        render json: ListSerializer.new(lists)
     end
 
     def create
