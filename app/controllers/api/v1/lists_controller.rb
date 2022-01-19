@@ -11,11 +11,10 @@ class Api::V1::ListsController < ApplicationController
     def create
         list = List.new(list_params)
         if list.save
-            render json: list, status: :accepted
-       else
+            render json: list, include: [:category], status: :accepted
+        else
            render json: {errors: list.errors.full_messages}, status: :unprocessible_entity
-       end
-
+        end
     end
 
 
